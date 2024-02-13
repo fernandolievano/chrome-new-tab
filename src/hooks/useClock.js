@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 
 const useClock = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
-  let interval;
 
   const tick = () => {
     setCurrentTime(new Date());
   };
 
   useEffect(() => {
+    let interval;
+
     interval = setInterval(() => {
       tick();
     }, 1000);
