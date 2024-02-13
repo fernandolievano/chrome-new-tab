@@ -8,7 +8,7 @@ const Clock = () => {
 
   return (
     <div className="py-8 px-4">
-      <h2 className='clock-time text-9xl font-light'>{prettifiedTime()}</h2>
+      <h2 className='clock-time select-none text-9xl font-light'>{prettifiedTime()}</h2>
     </div>
   );
 };
