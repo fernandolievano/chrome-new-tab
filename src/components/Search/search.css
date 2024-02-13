@@ -1,0 +1,33 @@
+.google-logo {
+  --google-red: #DB4437;
+  --google-blue: #4285F4;
+  --google-green: #0F9D58;
+  --google-yellow: #F4B400;
+}
+
+@keyframes google-logo-animation {
+    0% {
+      fill: var(--google-red);
+    }
+    25% {
+      fill: var(--google-blue);
+    }
+    50% {
+      fill: var(--google-green);
+    }
+    75% {
+      fill: var(--google-yellow);
+    }
+    100% {
+      fill: var(--google-red);
+    }
+}
+.google-logo {
+  fill: var(--google-red);
+  animation-name: google-logo-animation;
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  transition: all linear .3s;
+}
