@@ -5,7 +5,7 @@ import './dollar.css';
 const DollarList = () => {
   const { dollarPrices } = useDollarPrice();
   return (
-    <div className="overflow-hidden flex py-1 px-0 relative gap-4 select-none">
+    <div className="overflow-hidden flex py-1 px-0 relative gap-4 select-none w-full">
       <div className="marquee flex flex-shrink-0 justify-around gap-[15px]">
         {
           dollarPrices.map(price => {
