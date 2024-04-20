@@ -6,7 +6,7 @@ import Wallpaper from 'components/Wallpaper/Wallpaper';
 
 function App() {
   return (
-    <div className="main p-8 flex flex-col items-center justify-center">
+    <div className="bg-black text-white w-screen h-screen p-8 flex flex-col items-center justify-center">
       <Wallpaper />
       <Clock />
       <Search />

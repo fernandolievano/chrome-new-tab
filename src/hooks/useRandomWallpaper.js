@@ -6,16 +6,17 @@ const useRandomWallpaper = () => {
   const [errors, setErrors] = useState(null);
 
   useEffect(() => {
+    setIsLoading(true);
+
     try {
       fetch('https://bing.biturl.top/?resolution=1920&format=json&index=0&mkt=en-US')
         .then(response => response.json())
         .then(data => {
-          console.log('data: ', data)
-          document.body.style.backgroundImage = `url('${data.url}')`;
-          setWallpaper(data)
-        })
+          setIsLoading(false);
+          setWallpaper(data);
+        });
     } catch (error) {
-      setErrors(error)
+      setErrors(error);
     }
   }, []);
 
@@ -26,4 +27,4 @@ const useRandomWallpaper = () => {
   };
 };
 
-export default useRandomWallpaper
+export default useRandomWallpaper;
