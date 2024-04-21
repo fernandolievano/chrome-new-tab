@@ -8,7 +8,7 @@ const Wallpaper = () => {
 
   return (
     <div className="absolute w-screen h-screen overflow-hidden">
-      <img src={wallpaper.url} alt={wallpaper.copyright} className='w-full h-full object-cover opacity-50' />
+      <img src={wallpaper.url} alt={wallpaper.copyright} className='w-full h-full object-cover opacity-40' />
 
       <div className={`text-white wallpaper-att absolute top-3 left-3 text-xs ${wallpaper.copyright ? 'visible' : 'hidden'}`}>
         <a className='flex gap-2 items-center' href={wallpaper.copyright_link} target="_blank" rel="noopener noreferrer">

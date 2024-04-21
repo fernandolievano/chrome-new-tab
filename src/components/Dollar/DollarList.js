@@ -6,14 +6,14 @@ const DollarList = () => {
   const { dollarPrices, dollarErrors, isLoading } = useDollarPrice();
   if (isLoading) {
     return (
-      <div className="flex py-1 px-0 w-full text-gray-600">
+      <div className="flex py-1 px-0 w-full text-gray-400">
         Cargando...
       </div>
     )
   } else {
     if (dollarErrors) {
       return (
-        <div className="flex py-1 px-0 w-full text-red-500">
+        <div className="flex py-1 px-0 w-full text-red-400">
           No se pudieron cargar los datos
         </div>
       )
@@ -25,7 +25,7 @@ const DollarList = () => {
               dollarPrices.map(price => {
                 return (
                   <div className="py-1" key={price.casa}>
-                    <div className={(price.casa === 'oficial' ? 'text-[#0F9D58]' : 'text-gray-700')}>
+                    <div className={(price.casa === 'oficial' ? 'text-green-300' : 'text-white')}>
                       <span>{price.nombre}:</span>{' '}<strong>${price.venta}</strong>
                     </div>
                   </div>
@@ -39,7 +39,7 @@ const DollarList = () => {
               dollarPrices.map(price => {
                 return (
                   <div className="py-1" key={price.casa}>
-                    <div className={(price.casa === 'oficial' ? 'text-[#0F9D58]' : 'text-gray-700')}>
+                    <div className={(price.casa === 'oficial' ? 'text-green-300' : 'text-white')}>
                       <span>{price.nombre}:</span>{' '}<strong>${price.venta}</strong>
                     </div>
                   </div>
