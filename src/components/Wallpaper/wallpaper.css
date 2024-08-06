@@ -1,0 +1,11 @@
+.wallpaper-att {
+  text-shadow: -2px 2px 8px rgba(255, 255, 255, 0.35);
+  -webkit-text-shadow: -2px 2px 8px rgba(255, 255, 255, 0.35);
+  -moz-text-shadow: -2px 2px 8px rgba(255, 255, 255, 0.35);
+}
+
+.edit-button {
+  box-shadow: 1px 1px 20px 1px rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: 1px 1px 20px 1px rgba(255, 255, 255, 0.3);
+  -moz-box-shadow: 1px 1px 20px 1px rgba(255, 255, 255, 0.3);
+}
