@@ -10,7 +10,7 @@ const Wallpaper = () => {
     <div className="absolute w-screen h-screen overflow-hidden">
       <img
         src={wallpaper}
-        className='object-cover object-top w-full h-auto mx-auto opacity-40'
+        className='object-cover object-top w-full h-full mx-auto opacity-40'
         loading='eager'
         alt='New Tab'
         onError={e => e.target.src = defaultWallpaper}
