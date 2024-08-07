@@ -9,11 +9,11 @@ function App() {
   const { online } = useCheckConnection();
 
   return (
-    <div className="bg-black text-white w-screen h-screen p-8 flex flex-col items-center justify-center">
-      {!!online ? <Wallpaper /> : (<p className='absolute top-0 left-0 p-4 uppercase font-bold'>Sin conexión</p>)}
+    <div className="flex flex-col items-center justify-center w-screen h-screen p-8 text-white bg-black">
+      <Wallpaper />
       <Clock />
       <Search />
-      {!!online ? <Dollar /> : (<p className='absolute bottom-0 left-0 right-0 mx-auto text-center p-4'>Revisa tu conexión a internet</p>)}
+      {!!online ? <Dollar /> : (<p className='absolute bottom-0 left-0 right-0 p-4 mx-auto text-center'>Revisa tu conexión a internet</p>)}
     </div>
   );
 }
