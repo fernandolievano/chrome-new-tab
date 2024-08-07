@@ -6,20 +6,20 @@ const DollarList = () => {
   const { dollarPrices, dollarErrors, isLoading } = useDollarPrice();
   if (isLoading) {
     return (
-      <div className="flex py-1 px-0 w-full text-gray-400">
+      <div className="flex w-full px-2 py-1 text-gray-400">
         Cargando...
       </div>
     )
   } else {
     if (dollarErrors) {
       return (
-        <div className="flex py-1 px-0 w-full text-red-400">
+        <div className="flex w-full px-2 py-1 text-red-400">
           No se pudieron cargar los datos
         </div>
       )
     } else {
       return (
-        <div className="overflow-hidden flex py-1 px-0 relative gap-4 select-none w-full">
+        <div className="relative flex w-full gap-4 px-0 py-1 overflow-hidden select-none">
           <div className="marquee flex flex-shrink-0 justify-around gap-[15px]">
             {
               dollarPrices.map(price => {
