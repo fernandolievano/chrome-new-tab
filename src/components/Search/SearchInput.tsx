@@ -10,6 +10,7 @@ const SearchInput = () => {
 		<div className="w-full h-full max-w-[600px] relative">
 			<form onSubmit={handleSearch}>
 				<input
+					data-testid="searchbox"
 					type="search"
 					id="inputSearch"
 					aria-label="Buscar Google"
