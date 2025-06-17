@@ -2,11 +2,11 @@ import useSystemPanel from './useSystemPanel';
 import './system-panel.css';
 
 const SystemPanel = () => {
-  const { isOnline, tabsCount, mediaTabs, marqueeRef, isOverflowing, showInfo } = useSystemPanel();
+  const { isOnline, tabsCount, mediaTabs, marqueeRef, isOverflowing, toggleDetailsModal } = useSystemPanel();
 
   return (
     <div className="text-sm text-white bg-black/30 backdrop-blur-md shadow absolute bottom-0 left-0 right-0 overflow-hidden">
-      <div id="marquee" ref={marqueeRef} className={`w-fit min-w-full py-2 px-4 flex justify-between items-center gap-4 ${isOverflowing ? 'cursor-pointer' : 'cursor-default'}`} onClick={showInfo}>
+      <div id="marquee" ref={marqueeRef} className={`w-fit min-w-full py-2 px-4 flex justify-between items-center gap-4 select-none ${isOverflowing ? 'cursor-pointer' : 'cursor-default'}`} onClick={() => toggleDetailsModal(true)}>
         <div className="flex justify-start items-center gap-4">
           <div className='flex items-center justify-start gap-1 min-w-fit'>
             <span>🌐 Estado:</span>

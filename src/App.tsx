@@ -3,6 +3,7 @@ import Wallpaper from './components/Wallpaper/Wallpaper';
 import Clock from './components/Clock/Clock';
 import Search from './components/Search/Search';
 import SystemPanel from './components/SystemPanel/SystemPanel';
+import SystemPanelDetails from './components/SystemPanel/SystemPanelDetails';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Clock />
       <Search />
 
+      <SystemPanelDetails />
       <SystemPanel />
     </div>
   );

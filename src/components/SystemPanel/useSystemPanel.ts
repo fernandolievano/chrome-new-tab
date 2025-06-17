@@ -1,25 +1,15 @@
 import { useEffect, useState, useRef } from 'react';
 
-type MediaTab = {
+type Tab = {
 	id: number;
 	title: string;
 	url: string;
 };
 
 const useSystemPanel = () => {
+	const [tabs, setTabs] = useState<Tab[]>([]);
 	const [tabsCount, setTabsCount] = useState<number>(0);
-	const [mediaTabs, setMediaTabs] = useState<MediaTab[]>([
-		{
-			id: 123123,
-			title: 'Beneath Your Beautiful (con Emeli Sandé) - YouTube Music ♠︎⋆⁺₊',
-			url: 'https://www.youtube.com/watch?v=hsnfBhCevUc&t=2500s'
-		},
-		{
-			id: 4356456,
-			title: 'Lonely - YouTube Music',
-			url: 'https://www.youtube.com/watch?v=hsnfBhCevUc&t=2500s'
-		}
-	]);
+	const [mediaTabs, setMediaTabs] = useState<Tab[]>([]);
 	const [isOnline, setIsOnline] = useState<boolean>(navigator.onLine);
 
 	const [isOverflowing, setIsOverflowing] = useState<boolean>(false);
@@ -27,7 +17,15 @@ const useSystemPanel = () => {
 
 	const updateTabsInfo = () => {
 		if (chrome?.tabs) {
-			chrome.tabs.query({}, (tabs) => setTabsCount(tabs.length));
+			chrome.tabs.query({}, (tabs) => {
+				setTabsCount(tabs.length);
+				const formatted = tabs.map((tab) => ({
+					id: tab.id ?? 0,
+					title: tab.title ?? 'Sin título',
+					url: tab.url ?? ''
+				}));
+				setTabs(formatted);
+			});
 			chrome.tabs.query({ audible: true }, (audibleTabs) => {
 				const formatted = audibleTabs.map((tab) => ({
 					id: tab.id ?? 0,
@@ -39,11 +37,37 @@ const useSystemPanel = () => {
 		}
 	};
 
-	const showInfo = () => {
-		if (isOverflowing) {
-			alert('expanded info!');
+	const toggleDetailsModal = (payload = true) => {
+		const detailsModal = document.getElementById(
+			'system-panel-details'
+		) as HTMLDivElement;
+
+		if (isOverflowing && payload) {
+			if (detailsModal) {
+				detailsModal.classList.remove(
+					'opacity-0',
+					'invisible',
+					'-z-40'
+				);
+				detailsModal.classList.add('opacity-100', 'visible', 'z-40');
+			}
 		} else {
-			console.info('no popup needed!');
+			if (!payload) {
+				if (detailsModal) {
+					detailsModal.classList.remove(
+						'opacity-100',
+						'visible',
+						'z-40'
+					);
+					detailsModal.classList.add(
+						'opacity-0',
+						'invisible',
+						'-z-40'
+					);
+				}
+			} else {
+				console.info('no popup needed!');
+			}
 		}
 	};
 
@@ -101,10 +125,11 @@ const useSystemPanel = () => {
 	return {
 		isOnline,
 		tabsCount,
+		tabs,
 		mediaTabs,
 		isOverflowing,
 		marqueeRef,
-		showInfo
+		toggleDetailsModal
 	};
 };
 
