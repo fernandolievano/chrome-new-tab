@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 type MediaTab = {
 	id: number;
@@ -8,8 +8,22 @@ type MediaTab = {
 
 const useSystemPanel = () => {
 	const [tabsCount, setTabsCount] = useState<number>(0);
-	const [mediaTabs, setMediaTabs] = useState<MediaTab[]>([]);
+	const [mediaTabs, setMediaTabs] = useState<MediaTab[]>([
+		{
+			id: 123123,
+			title: 'Beneath Your Beautiful (con Emeli Sandé) - YouTube Music ♠︎⋆⁺₊',
+			url: 'https://www.youtube.com/watch?v=hsnfBhCevUc&t=2500s'
+		},
+		{
+			id: 4356456,
+			title: 'Lonely - YouTube Music',
+			url: 'https://www.youtube.com/watch?v=hsnfBhCevUc&t=2500s'
+		}
+	]);
 	const [isOnline, setIsOnline] = useState<boolean>(navigator.onLine);
+
+	const [isOverflowing, setIsOverflowing] = useState<boolean>(false);
+	const marqueeRef = useRef<HTMLDivElement>(null);
 
 	const updateTabsInfo = () => {
 		if (chrome?.tabs) {
@@ -25,14 +39,33 @@ const useSystemPanel = () => {
 		}
 	};
 
+	const showInfo = () => {
+		if (isOverflowing) {
+			alert('expanded info!');
+		} else {
+			console.info('no popup needed!');
+		}
+	};
+
 	useEffect(() => {
 		// Estado de conexión
 		const updateOnlineStatus = () => setIsOnline(navigator.onLine);
 		window.addEventListener('online', updateOnlineStatus);
 		window.addEventListener('offline', updateOnlineStatus);
 
-		updateTabsInfo();
+		// Detectar overflow al montar
+		const checkOverflow = () => {
+			if (marqueeRef.current) {
+				const { scrollWidth, clientWidth } = marqueeRef.current;
+				setIsOverflowing(scrollWidth > clientWidth);
+			}
+		};
 
+		checkOverflow();
+		window.addEventListener('resize', checkOverflow);
+
+		// Actualizar info relacionada a las pestañas
+		updateTabsInfo();
 		const handleTabChange = () => updateTabsInfo();
 
 		// Validar que los eventos existan antes de usarlos
@@ -55,6 +88,7 @@ const useSystemPanel = () => {
 		return () => {
 			window.removeEventListener('online', updateOnlineStatus);
 			window.removeEventListener('offline', updateOnlineStatus);
+			window.removeEventListener('resize', checkOverflow);
 
 			if (hasListeners) {
 				chrome.tabs.onCreated.removeListener(handleTabChange);
@@ -67,7 +101,10 @@ const useSystemPanel = () => {
 	return {
 		isOnline,
 		tabsCount,
-		mediaTabs
+		mediaTabs,
+		isOverflowing,
+		marqueeRef,
+		showInfo
 	};
 };
 
