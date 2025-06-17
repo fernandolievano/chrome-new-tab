@@ -29,6 +29,7 @@
     "src"
   ],
   "types": [
+    "chrome",
     "vitest",
     "./src/vite-env.d.ts"
   ]
