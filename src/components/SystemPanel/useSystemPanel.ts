@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import { checkOnline } from '../../utils/checkOnlineStatus';
 
 type Tab = {
 	id: number;
@@ -73,7 +74,11 @@ const useSystemPanel = () => {
 
 	useEffect(() => {
 		// Estado de conexión
-		const updateOnlineStatus = () => setIsOnline(navigator.onLine);
+		const updateOnlineStatus = async () => {
+			const realStatus = await checkOnline();
+			setIsOnline(realStatus);
+		};
+		updateOnlineStatus();
 		window.addEventListener('online', updateOnlineStatus);
 		window.addEventListener('offline', updateOnlineStatus);
 
