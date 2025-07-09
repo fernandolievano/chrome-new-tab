@@ -1,54 +1,44 @@
-# React + TypeScript + Vite
+# chrome-new-tab
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una extensión ligera y personalizable que reemplaza la pestaña nueva del navegador con un panel informativo y estético. Muestra el estado de conexión, cantidad de pestañas abiertas y reproducción multimedia. Además, permite configurar tu imagen de fondo para que cada nueva pestaña tenga tu propio estilo.
 
-Currently, two official plugins are available:
+![screenshot](./public/screenshot.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Características
 
-## Expanding the ESLint configuration
+- 🌐 Estado de conexión (online/offline)
+- 🧭 Cantidad total de pestañas abiertas
+- 🎵 Detección de pestañas con contenido multimedia
+- 🖼️ Imagen de fondo personalizable
+- ⚡ Rápido y liviano, construido con Vite + React
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Tecnologías
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Chrome Extensions API](https://developer.chrome.com/docs/extensions/)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📦 Instalación
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Descargá la última versión desde la sección de [Releases](https://github.com/fernandolievano/chrome-new-tab/releases).
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+2. Extraé el contenido del archivo `.zip`.
+
+3. Cargá la extensión en tu navegador:
+
+   - Abrí `chrome://extensions` o `edge://extensions`
+   - Activá **Modo desarrollador**
+   - Hacé click en **"Cargar sin comprimir"**
+   - Seleccioná la carpeta extraída
+
+✅ ¡Listo! Ahora cada nueva pestaña mostrará tu panel personalizado.
+
+## 📋 Registro de cambios
+
+Ver [CHANGELOG.md](./CHANGELOG.md) para más detalles.
+
+## 🙌 Créditos
+
+Proyecto desarrollado por Fernando Liévano.
+Con foco en personalización, simplicidad y rendimiento.
