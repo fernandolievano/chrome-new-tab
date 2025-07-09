@@ -20,19 +20,23 @@ const useSystemPanel = () => {
 		if (chrome?.tabs) {
 			chrome.tabs.query({}, (tabs) => {
 				setTabsCount(tabs.length);
-				const formatted = tabs.map((tab) => ({
-					id: tab.id ?? 0,
-					title: tab.title ?? 'Sin título',
-					url: tab.url ?? ''
-				}));
+				const formatted = tabs
+					.filter((tab) => tab.title && tab.title.trim() !== '')
+					.map((tab) => ({
+						id: tab.id ?? 0,
+						title: tab.title ?? 'Sin título',
+						url: tab.url ?? ''
+					}));
 				setTabs(formatted);
 			});
 			chrome.tabs.query({ audible: true }, (audibleTabs) => {
-				const formatted = audibleTabs.map((tab) => ({
-					id: tab.id ?? 0,
-					title: tab.title ?? 'Sin título',
-					url: tab.url ?? ''
-				}));
+				const formatted = audibleTabs
+					.filter((tab) => tab.title && tab.title.trim() !== '')
+					.map((tab) => ({
+						id: tab.id ?? 0,
+						title: tab.title ?? 'Sin título',
+						url: tab.url ?? ''
+					}));
 				setMediaTabs(formatted);
 			});
 		}
