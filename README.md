@@ -1,5 +1,7 @@
 # chrome-new-tab
 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/fernandolievano/chrome-new-tab?style=flat-square)
+
 Una extensión ligera y personalizable que reemplaza la pestaña nueva del navegador con un panel informativo y estético. Muestra el estado de conexión, cantidad de pestañas abiertas y reproducción multimedia. Además, permite configurar tu imagen de fondo para que cada nueva pestaña tenga tu propio estilo.
 
 ![screenshot](./public/screenshot.png)
